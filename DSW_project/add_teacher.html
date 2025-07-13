@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Information Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        label {
+            font-size: 16px;
+            margin: 10px 0 5px;
+            display: block;
+        }
+        input[type="text"], input[type="email"], input[type="password"], input[type="date"], input[type="tel"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .radio-group {
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .radio-group label {
+            display: inline-block;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Teacher Information Form</h1>
+
+        <form action="add_teacher.php" method="post">
+            <div class="form-group">
+                <label for="id">Teacher ID</label>
+                <input type="text" id="id" name="id" required>
+            </div>
+
+            <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input type="text" id="first_name" name="first_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <input type="text" id="last_name" name="last_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <select id="subject" name="subject" required>
+                    <option value="Physics">Physics</option>
+                    <option value="Chemistry">Chemistry</option>
+                    <option value="Biology">Bioloy</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Literature">Literature</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="phone_no">Phone Number</label>
+                <input type="tel" id="phone_no" name="phone_no" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea id="address" name="address" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
+
+            <div class="form-group radio-group">
+                <label>Gender</label>
+                <input type="radio" id="male" name="gender" value="Male" required> <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="Female" required> <label for="female">Female</label>
+                <input type="radio" id="other" name="gender" value="Other" required> <label for="other">Other</label>
+            </div>
+
+            <div class="form-group">
+                <label for="hire_date">Hire Date</label>
+                <input type="date" id="hire_date" name="hire_date" required>
+            </div>
+
+            <button type="submit" class="button">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>

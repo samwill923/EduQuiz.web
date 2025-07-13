@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding-top: 20px;
+            background-color: #fff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .section {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .questions-container {
+            margin-top: 20px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .answers input[type="text"] {
+            margin-bottom: 5px;
+        }
+
+        button {
+            padding: 8px 15px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create a Test</h1>
+
+        <form action="create_test.php" method="post" id="testForm">
+            <div class="section">
+                <label for="teacherId">Teacher ID:</label>
+                <input type="text" id="teacherId" name="teacherId" required>
+            </div>
+
+            <div class="section">
+                <label for="subject">Subject:</label>
+                <select id="subject" name="subject" required>
+                    <option value="" disabled selected>Select a subject</option>
+                    <option value="Physics">Physics</option>
+                    <option value="Chemistry">Chemistry</option>
+                    <option value="Maths">Maths</option>
+                    <option value="Literature">Literature</option>
+                    <option value="Biology">Biology</option>
+                </select>
+            </div>
+
+            <div class="questions-container" id="questionsContainer">
+                <div class="question" id="question0">
+                    <label for="question1">Question 1:</label>
+                    <input type="text" name="questions[0][questionText]" placeholder="Enter your question" required>
+                    <div class="answers" id="answers0"></div>
+                    <button type="button" id="addChoice0" onclick="addChoice(0)">Add Choice</button>
+                    <button type="button" onclick="removeQuestion(0)">Remove Question</button>
+                </div>
+            </div>
+
+            <button type="button" id="addQuestionBtn">Add Question</button>
+            <button type="submit">Save Test</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('addQuestionBtn').addEventListener('click', addQuestion);
+
+        let questionCount = 1;
+
+        function addQuestion() {
+            const container = document.getElementById('questionsContainer');
+            const newQuestion = document.createElement('div');
+            newQuestion.classList.add('question');
+            newQuestion.id = `question${questionCount}`;
+
+            newQuestion.innerHTML = `
+                <label for="question${questionCount + 1}">Question ${questionCount + 1}:</label>
+                <input type="text" name="questions[${questionCount}][questionText]" placeholder="Enter your question" required>
+                <div class="answers" id="answers${questionCount}"></div>
+                <button type="button" id="addChoice${questionCount}" onclick="addChoice(${questionCount})">Add Choice</button>
+                <button type="button" onclick="removeQuestion(${questionCount})">Remove Question</button>
+            `;
+
+            container.appendChild(newQuestion);
+            questionCount++;
+        }
+
+        function addChoice(questionIndex) {
+            const answerContainer = document.getElementById(`answers${questionIndex}`);
+            const choiceCount = answerContainer.childElementCount + 1;
+            const newChoice = document.createElement('div');
+newChoice.classList.add('choice');
+newChoice.innerHTML = `
+    <input type="text" name="questions[${questionIndex}][choices][${choiceCount}][text]" placeholder="Enter choice" required>
+    <label>
+        <input type="radio" name="questions[${questionIndex}][correct]" value="${choiceCount}" required> Correct
+    </label>
+    <button type="button" onclick="removeChoice(this)">Remove</button>
+`;
+answerContainer.appendChild(newChoice);
+
+        }
+
+        function removeChoice(button) {
+            button.parentElement.remove();
+        }
+
+        function removeQuestion(questionIndex) {
+            const questionElement = document.getElementById(`question${questionIndex}`);
+            questionElement.remove();
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduQuiz</title>
+    <style>
+        body {
+            background-color: #f5f5dc; 
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            border: 5px solid #4CAF50; 
+            padding: 40px;
+            border-radius: 15px;
+            background-color: #ffffff; 
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
+            text-align: center;
+            width: 80%; 
+            max-width: 600px; 
+        }
+        h1 {
+            font-size: 3em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .message {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            color: #333;
+        }
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .option {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            background-color: #45a049;
+            transform: translateY(-3px); 
+        }
+
+        .option:active {
+            transform: translateY(0); 
+        }
+        .admin-option {
+            padding: 6px 12px;  
+            font-size: 0.9em;    
+            background-color: #ff5722; 
+            color: white;
+            border: none;
+            border-radius: 5px; 
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .admin-option:hover {
+            background-color: #e64a19;  
+            transform: translateY(-2px); 
+        }
+
+        .admin-option:active {
+            transform: translateY(0); 
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>EduQuiz</h1>
+        <h2>
+            An interactive platform to test the young minds!
+        </h2>
+        <div class="message">You are?</div>
+        <div class="options">
+            <button class="option" onclick="location.href='student_login.html'">Student</button>
+            <button class="option" onclick="location.href='teacher_login.html'">Teacher</button>
+            <button class="admin-option" onclick="location.href='admin_login.html'">Admin</button>
+        </div>
+    </div>
+</body>
+</html>

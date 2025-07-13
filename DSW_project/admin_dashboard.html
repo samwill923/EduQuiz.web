@@ -1,0 +1,122 @@
+<?php
+session_start();
+if (!isset($_SESSION['admin_id'])) {
+    header("Location: admin_login.html");
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .card {
+            width: 30%;
+            margin-bottom: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+        .card a {
+            display: block;
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .card a:hover {
+            background-color: #45a049;
+        }
+        .logout-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #f44336;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: #e53935;
+        }
+
+        .logout-btn:active {
+            transform: translateY(2px);
+        }
+    </style>
+</head>
+<body>
+    <button class="logout-btn" onclick="window.location.href='html1.html'">Logout</button>
+
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+
+        <div class="dashboard">
+            <div class="card">
+                <h3>Add Teacher</h3>
+                <a href="add_teacher.html">Go to Add Teacher</a>
+            </div>
+            
+            <div class="card">
+                <h3>Drop Teacher</h3>
+                <a href="drop_teacher.html">Go to Drop Teacher</a>
+            </div>
+
+            <div class="card">
+                <h3>Add Student</h3>
+                <a href="add_student.html">Go to Add Student</a>
+            </div>
+
+            <div class="card">
+                <h3>Drop Student</h3>
+                <a href="drop_student.html">Go to Drop Student</a>
+            </div>
+
+            <div class="card">
+                <h3>Change Password</h3>
+                <a href="change_password.html">Go to Change Password</a>
+            </div>
+
+            <div class="card">
+                <h3>Delete Test</h3>
+                <a href="delete_test.html">Go to Delete Quiz</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
